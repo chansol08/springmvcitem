@@ -12,10 +12,11 @@ public class ItemRepository {
 
     /**
      * repository 맵 생성
+     * 멀티 쓰래드 사용 시 ConcurrentHashMap 사용
      * sequence 로 id 의 값을 자동으로 관리
      */
-    private static final Map<Long, Item> store = new HashMap<>();
-    private static Long sequence = 0L;
+    private static final Map<Long, Item> store = new HashMap<>(); //static
+    private static Long sequence = 0L; //static
 
     public Item save(Item item) {
         item.setId(++sequence);
@@ -27,6 +28,10 @@ public class ItemRepository {
         return store.get(id);
     }
 
+    /**
+     * store 의 값을 보전하기 위해
+     * List 로 감싸서 반환
+     */
     public List<Item> findAll() {
         return new ArrayList<>(store.values());
     }

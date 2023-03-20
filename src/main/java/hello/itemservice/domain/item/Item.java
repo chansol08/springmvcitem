@@ -1,8 +1,12 @@
 package hello.itemservice.domain.item;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+/**
+ * @Data 는 사용시 주의할 필요가 있다.
+ */
+@Getter @Setter
 public class Item {
 
     private Long id;
